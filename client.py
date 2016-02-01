@@ -20,10 +20,13 @@ print "Client requesting pi digits calculated for significance of 1 to %i digits
 results = list(make_pi.delay(x) for x in range(1, number_of_digits))
 pbar = ProgressBar(widgets=[Percentage(), Bar()], max_value=number_of_digits).start()
 counter = 0
+
 while not all(result.ready() for result in results):
-    time.sleep(0.5)
+    time.sleep(0.1)
     finishers = filter(lambda x: x.ready(), results)
     for finisher in finishers:
+        # finisher.ready == True which means we have result. Get the result by finisher.get()
+        # Result will be something json serializable.
         response = finisher.get()
         """print "[%s] [Worker @ %s] pi: %s" % (datetime.datetime.now().strftime('%I:%M:%S%p'),
                                              response['hostname'],
