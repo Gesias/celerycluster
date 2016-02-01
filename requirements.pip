@@ -1,0 +1,11 @@
+anyjson==0.3.3
+billiard==3.3.0.22
+celery==3.1.20
+ecdsa==0.13
+Fabric==1.10.2
+kombu==3.0.33
+paramiko==1.16.0
+progressbar2==3.6.0
+pycrypto==2.6.1
+pytz==2015.7
+redis==2.10.5
